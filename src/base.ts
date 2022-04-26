@@ -1,12 +1,8 @@
 import Tribute from "tributejs";
 import debounce from './helper/debounce';
 
-const template = document.createElement("template");
-template.innerHTML = /*html*/`
-<style>
-  :host {
-    position: relative;
-  }
+let el_style = document.createElement('style');
+el_style.innerHTML = /*css*/`
   .tribute-container {
     position: absolute;
     top: 0;
@@ -39,18 +35,13 @@ template.innerHTML = /*html*/`
   .tribute-container .menu-highlighted {
     font-weight: bold;
   }
-</style>
-<slot></slot>
 `;
 
+document.body.append(el_style);
+
 export default class extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-  }
 
   connectedCallback() {
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
     this._values = debounce(this._values, 500);
     this._tribute = new Tribute(this._tributeConfig());
     this.el_input = this.querySelector('textarea, input');
@@ -61,7 +52,6 @@ export default class extends HTMLElement {
 
   _tributeConfig() {
     return {
-      menuContainer: this.shadowRoot,
       allowSpaces: true,
       requireLeadingSpace: false,
       replaceTextSuffix: '-',
