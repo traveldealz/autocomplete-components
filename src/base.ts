@@ -2,6 +2,7 @@ import Tribute from "tributejs";
 import debounce from './helper/debounce';
 
 let el_style = document.createElement('style');
+el_style.id = 'tributejs-style';
 el_style.innerHTML = /*css*/`
   .tribute-container {
     position: absolute;
@@ -37,8 +38,6 @@ el_style.innerHTML = /*css*/`
   }
 `;
 
-document.body.append(el_style);
-
 export default class extends HTMLElement {
 
   connectedCallback() {
@@ -47,6 +46,9 @@ export default class extends HTMLElement {
     this.el_input = this.querySelector('textarea, input');
     if (this.el_input) {
       this._tribute.attach(this.el_input);
+    }
+    if(!document.querySelector('style#tributejs-style')) {
+      document.body.append(el_style);
     }
   }
 
