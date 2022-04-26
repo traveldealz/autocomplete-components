@@ -1,4 +1,5 @@
 import Tribute from "tributejs";
+import debounce from './helper/debounce';
 
 const template = document.createElement("template");
 template.innerHTML = /*html*/`
@@ -50,6 +51,7 @@ export default class extends HTMLElement {
 
   connectedCallback() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this._values = debounce(this._values, 500);
     this._tribute = new Tribute(this._tributeConfig());
     this._tribute.attach(this.firstChild);
   }
@@ -87,5 +89,3 @@ export default class extends HTMLElement {
       .then(data => cb(data.data))
   }
 }
-
-
