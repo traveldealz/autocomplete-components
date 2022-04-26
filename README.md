@@ -1,2 +1,1 @@
-# autocomplete-components
-Created with WebComponents.dev
+# Autocomplete Components
