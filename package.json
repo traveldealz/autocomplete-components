@@ -1,6 +1,6 @@
 {
-  "name": "@wcd/traveldealz.autocomplete-components",
-  "version": "0.0.0",
+  "name": "@traveldealz/autocomplete-components",
+  "version": "1.0.0",
   "scripts": {
     "serve": "npx wcd-cli@latest serve fg5zVNbsK4RvK2uSGZEv --open"
   },
