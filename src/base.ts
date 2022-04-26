@@ -53,7 +53,10 @@ export default class extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this._values = debounce(this._values, 500);
     this._tribute = new Tribute(this._tributeConfig());
-    this._tribute.attach(this.firstChild);
+    this.el_input = this.querySelector('textarea, input');
+    if (this.el_input) {
+      this._tribute.attach(this.el_input);
+    }
   }
 
   _tributeConfig() {
