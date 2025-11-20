@@ -4,7 +4,7 @@ export default class extends BaseElement {
 
   connectedCallback() {
     super.connectedCallback();
-    fetch('https://data.travel-dealz.eu/api/countries')
+    fetch('https://data.travel-dealz.net/api/countries')
       .then(resp => resp.json())
       .then(countries => this._tribute.append(0, countries))
   }

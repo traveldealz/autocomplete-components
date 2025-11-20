@@ -15,7 +15,7 @@ export default class extends BaseElement {
 
   _values(text, cb) {
     if(3 > text.length) return;
-    fetch('https://data.travel-dealz.eu/api/airports?search=' + encodeURIComponent(text))
+    fetch('https://data.travel-dealz.net/api/airports?search=' + encodeURIComponent(text))
       .then(resp => resp.json())
       .then(data => cb(data.data))
   }
