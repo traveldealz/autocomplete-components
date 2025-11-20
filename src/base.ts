@@ -79,7 +79,7 @@ export default class extends HTMLElement {
 
   _values(text, cb) {
     if(3 > text.length) return;
-    fetch('https://data.travel-dealz.eu/api/locodes?has_port=true&search=' + encodeURIComponent(text))
+    fetch('https://data.travel-dealz.net/api/locodes?has_port=true&search=' + encodeURIComponent(text))
       .then(resp => resp.json())
       .then(data => cb(data.data))
   }
